@@ -22,5 +22,5 @@ public class BaseEntity {
     protected void onUpdate() {
         lastUpdate = LocalDateTime.now();
     }
-	
+    
 }
