@@ -11,7 +11,7 @@ function useDevices() {
   // 初始載入
   useEffect(() => {
     deviceService.getAllDevices()
-      .then(res => setDevices(res.data.data))
+      .then(setDevices)
       .catch(() => setError('無法取得設備資料'))
       .finally(() => setLoading(false));
   }, []);

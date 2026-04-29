@@ -1,0 +1,20 @@
+/* Dashboard */
+.dashboard h2 {
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: #888;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.statusMsg {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 16px;
+}
+
+.statusMsgError {
+  color: red;
+}

@@ -1,7 +1,9 @@
+import styles from './DeviceTable.module.css';
+
 const STATUS_LABEL = {
-  ONLINE: { text: '正常', className: 'status-online' },
-  OFFLINE: { text: '離線', className: 'status-offline' },
-  ALARM: { text: '警報', className: 'status-alarm' },
+  ONLINE: { text: '正常', styleKey: 'status-online' },
+  OFFLINE: { text: '離線', styleKey: 'status-offline' },
+  ALARM: { text: '警報', styleKey: 'status-alarm' },
 };
 
 const TYPE_LABEL = {
@@ -13,7 +15,7 @@ const TYPE_LABEL = {
 
 function DeviceTable({ devices }) {
   return (
-    <table className="device-table">
+    <table className={styles['device-table']}>
       <thead>
         <tr>
           <th>ID</th>
@@ -31,7 +33,10 @@ function DeviceTable({ devices }) {
               <td>{device.deviceName}</td>
               <td>{TYPE_LABEL[device.deviceType] ?? device.deviceType}</td>
               <td>
-                <span className={`status-badge ${status.className}`}>
+                <span
+                  className={`${styles['status-badge']} ${styles[status.styleKey] || ''
+                    }`}
+                >
                   {status.text}
                 </span>
               </td>
