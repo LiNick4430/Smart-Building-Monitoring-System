@@ -11,7 +11,7 @@ public class DeviceNotFoundException extends BaseException{
 
 	public DeviceNotFoundException(String message) {
 		super(message, 
-				HttpStatus.UNAUTHORIZED, 
+				HttpStatus.NOT_FOUND, 
 				ErrorCode.DEVICE_NOT_FOUND);
 	}
 
