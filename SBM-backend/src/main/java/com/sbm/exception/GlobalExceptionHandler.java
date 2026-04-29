@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import com.sbm.response.ApiResponse;
 
@@ -35,5 +36,16 @@ public class GlobalExceptionHandler {
                         HttpStatus.INTERNAL_SERVER_ERROR.value(), 
                         "系統發生非預期錯誤，請聯繫管理員", 
                         ErrorCode.SYSTEM_ERROR));
+	}
+	
+	// 忽略靜態資源找不到的錯誤 (例如 favicon.ico)
+	@ExceptionHandler(NoResourceFoundException.class)
+	public ResponseEntity<ApiResponse<?>> handleNoResourceFoundException(NoResourceFoundException exception) {
+	    return ResponseEntity
+	            .status(HttpStatus.NOT_FOUND)
+	            .body(ApiResponse.error(
+	                    HttpStatus.NOT_FOUND.value(),
+	                    "找不到靜態資源：" + exception.getResourcePath(),
+	                    ErrorCode.RESOURCE_NOT_FOUND));
 	}
 }

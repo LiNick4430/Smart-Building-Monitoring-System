@@ -34,7 +34,7 @@ public class DeviceController {
 	
 	// 模擬觸發警報的 API (例如: PUT /api/devices/1/status?status=ALARM)
     @PutMapping("/{id}/status")
-    public ApiResponse<DeviceDTO>  updateStatus(@PathVariable Long id, @RequestParam String status) {
+    public ApiResponse<DeviceDTO> updateStatus(@PathVariable Long id, @RequestParam String status) {
     	DeviceDTO deviceDTO = deviceService.updateDeviceStatus(id, status);
         return ApiResponse.success(
         		String.format("設備名稱： %s, 更改為 \"%s\" 狀態", deviceDTO.getDeviceName(), 
