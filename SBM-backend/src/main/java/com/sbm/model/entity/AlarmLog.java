@@ -1,40 +1,43 @@
 package com.sbm.model.entity;
 
 import com.sbm.model.enums.DeviceStatus;
-import com.sbm.model.enums.DeviceType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "devices")
+@Table(name = "alarm_logs")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Device extends BaseEntity{
+public class AlarmLog extends BaseEntity{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;     // 裝置名稱，例如：1F大廳攝影機
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "device_id", nullable = false)
+    private Device device;          // 關聯到哪台設備
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private DeviceType type;     // 類型：CCTV, FIRE_ALARM, LIGHT
+    private DeviceStatus fromStatus;      // 變更前狀態
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private DeviceStatus status;   // 狀態：ONLINE, OFFLINE, ALARM
-
+    private DeviceStatus toStatus;        // 變更後狀態
+	
 }

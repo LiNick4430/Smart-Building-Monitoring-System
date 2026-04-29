@@ -37,7 +37,7 @@ public class DeviceController {
     public ApiResponse<DeviceDTO> updateStatus(@PathVariable Long id, @RequestParam String status) {
     	DeviceDTO deviceDTO = deviceService.updateDeviceStatus(id, status);
         return ApiResponse.success(
-        		String.format("設備名稱： %s, 更改為 \"%s\" 狀態", deviceDTO.getDeviceName(), 
-        		deviceDTO.getDeviceStatus()), deviceDTO);
+        		String.format("設備名稱： %s, 更改為 \"%s\" 狀態", deviceDTO.getDeviceName(), deviceDTO.getDeviceStatus()),
+        		deviceDTO);
     }
 }
