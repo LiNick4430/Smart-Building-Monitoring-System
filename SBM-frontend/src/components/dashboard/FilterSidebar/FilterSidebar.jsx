@@ -1,20 +1,9 @@
 // src/components/dashboard/FilterSidebar/FilterSidebar.jsx
 import styles from './FilterSidebar.module.css';
 
+import { TYPE_OPTIONS, STATUS_OPTIONS } from '@/constants/deviceEnums';
+
 const FLOORS = ['1F', '2F', '3F', 'B1'];
-
-const TYPES = [
-  { value: 'CCTV', label: '📷 攝影機' },
-  { value: 'FIRE_ALARM', label: '🔥 火災警報' },
-  { value: 'LIGHT', label: '💡 燈光' },
-  { value: 'ACCESS', label: '🔐 門禁' },
-];
-
-const STATUSES = [
-  { value: 'ONLINE', label: '正常' },
-  { value: 'OFFLINE', label: '離線' },
-  { value: 'ALARM', label: '警報' },
-];
 
 function FilterGroup({ title, options, value, onChange }) {
   return (
@@ -62,13 +51,13 @@ function FilterSidebar({ filters, setFilter, resetFilters, totalCount, filteredC
       />
       <FilterGroup
         title="類型"
-        options={TYPES}
+        options={TYPE_OPTIONS}
         value={filters.type}
         onChange={v => setFilter('type', v)}
       />
       <FilterGroup
         title="狀態"
-        options={STATUSES}
+        options={STATUS_OPTIONS}
         value={filters.status}
         onChange={v => setFilter('status', v)}
       />

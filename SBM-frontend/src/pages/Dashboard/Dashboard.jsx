@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import useDevices from '@/hooks/useDevices';
 import useFilteredDevices from '@/hooks/useFilteredDevices';
@@ -14,6 +14,10 @@ function Dashboard() {
   const { devices, loading, error, refetch } = useDevices();
   const { filteredDevices, filters, setFilter, resetFilters } = useFilteredDevices(devices);
   const [selectedDevice, setSelectedDevice] = useState(null);
+
+  useEffect(() => {
+    document.title = '設備總覽 | 智慧建築監控系統';
+  }, []);
 
   // Modal 變更成功後，透過 WebSocket 已經會更新，但這裡再 refetch 確保一致
   const handleSuccess = () => { };

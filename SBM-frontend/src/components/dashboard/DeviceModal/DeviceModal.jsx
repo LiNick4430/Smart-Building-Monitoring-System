@@ -3,24 +3,7 @@ import { useState } from 'react';
 import deviceService from '@/services/deviceService';
 import styles from './DeviceModal.module.css';
 
-const STATUS_OPTIONS = [
-  { value: 'ONLINE', label: '正常' },
-  { value: 'OFFLINE', label: '離線' },
-  { value: 'ALARM', label: '警報' },
-];
-
-const TYPE_LABEL = {
-  CCTV: '📷 攝影機',
-  FIRE_ALARM: '🔥 火災警報',
-  LIGHT: '💡 燈光',
-  ACCESS: '🔐 門禁',
-};
-
-const STATUS_LABEL = {
-  ONLINE: { text: '正常', styleKey: 'status-online' },
-  OFFLINE: { text: '離線', styleKey: 'status-offline' },
-  ALARM: { text: '警報', styleKey: 'status-alarm' },
-};
+import { STATUS_LABEL, TYPE_LABEL, STATUS_OPTIONS } from '@/constants/deviceEnums';
 
 function DeviceModal({ device, onClose, onSuccess }) {
   const [selected, setSelected] = useState(device.deviceStatus);

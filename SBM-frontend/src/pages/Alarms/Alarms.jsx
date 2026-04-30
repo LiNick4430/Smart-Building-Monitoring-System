@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import useAlarms from '@/hooks/useAlarms';
 import useDevices from '@/hooks/useDevices';
 import styles from './Alarms.module.css';
@@ -5,11 +7,7 @@ import styles from './Alarms.module.css';
 import AlarmTableSkeleton from './AlarmTableSkeleton';
 import AlarmTableCols from './AlarmTableCols';
 
-const STATUS_LABEL = {
-  ONLINE: { text: '正常', styleKey: 'status-online' },
-  OFFLINE: { text: '離線', styleKey: 'status-offline' },
-  ALARM: { text: '警報', styleKey: 'status-alarm' },
-};
+import { STATUS_LABEL } from '@/constants/deviceEnums';
 
 function StatusBadge({ status }) {
   const s = STATUS_LABEL[status] ?? { text: status, styleKey: '' };
@@ -33,6 +31,10 @@ function formatDateTime(dateStr) {
 function Alarms() {
   const { alarms, loading, error, refetch, deviceFilter, setDeviceFilter } = useAlarms();
   const { devices } = useDevices();
+
+  useEffect(() => {
+    document.title = '警報紀錄 | 智慧建築監控系統';
+  }, []);
 
   const handleFilterChange = (e) => {
     setDeviceFilter(e.target.value);

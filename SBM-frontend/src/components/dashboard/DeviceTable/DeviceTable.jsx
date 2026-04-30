@@ -1,18 +1,7 @@
 import styles from './DeviceTable.module.css';
 import DeviceTableCols from './DeviceTableCols';
 
-const STATUS_LABEL = {
-  ONLINE: { text: '正常', styleKey: 'status-online' },
-  OFFLINE: { text: '離線', styleKey: 'status-offline' },
-  ALARM: { text: '警報', styleKey: 'status-alarm' },
-};
-
-const TYPE_LABEL = {
-  CCTV: '📷 攝影機',
-  FIRE_ALARM: '🔥 火災警報',
-  LIGHT: '💡 燈光',
-  ACCESS: '🔐 門禁',
-};
+import { STATUS_LABEL, TYPE_LABEL } from '@/constants/deviceEnums';
 
 function DeviceTable({ devices, onRowClick }) {
 

@@ -1,6 +1,8 @@
 import styles from './DeviceTableSkeleton.module.css';
 import DeviceTableCols from './DeviceTableCols';
 
+const COL_COUNT = 4;
+
 function DeviceTableSkeleton({ rows = 8 }) {
   return (
     <table className={styles['skeleton-table']}>
@@ -16,10 +18,11 @@ function DeviceTableSkeleton({ rows = 8 }) {
       <tbody>
         {Array.from({ length: rows }).map((_, i) => (
           <tr key={i}>
-            <td><span className={styles.bone} style={{ width: '32px' }} /></td>
-            <td><span className={styles.bone} style={{ width: '140px' }} /></td>
-            <td><span className={styles.bone} style={{ width: '90px' }} /></td>
-            <td><span className={styles.bone} style={{ width: '56px', borderRadius: '12px' }} /></td>
+            {Array.from({ length: COL_COUNT }).map((_, j) => (
+              <td key={j}>
+                <span className={styles.bone} />
+              </td>
+            ))}
           </tr>
         ))}
       </tbody>
