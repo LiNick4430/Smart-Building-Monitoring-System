@@ -30,6 +30,9 @@ public class ModelMapperConfig {
 	        mapper.map(src -> src.getDevice().getId(), AlarmLogDTO::setDeviceId);
 	        mapper.map(src -> src.getDevice().getName(), AlarmLogDTO::setDeviceName);
 	        mapper.map(src -> src.getDevice().getType(), AlarmLogDTO::setDeviceType);
+	        mapper.map(AlarmLog::getFromStatus, AlarmLogDTO::setFromStatus);
+	        mapper.map(AlarmLog::getToStatus, AlarmLogDTO::setToStatus);
+	        mapper.map(AlarmLog::getLastUpdate, AlarmLogDTO::setLastUpdate);
 	    });
 		
 		return modelMapper;

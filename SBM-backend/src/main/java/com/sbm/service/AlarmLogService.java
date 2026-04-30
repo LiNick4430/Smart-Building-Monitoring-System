@@ -20,7 +20,7 @@ public class AlarmLogService {
 	
 	// 取得所有紀錄（最新的排前面）
 	public List<AlarmLogDTO> getAllAlarms() {
-		return alarmLogRepository.findAll().stream()
+		return alarmLogRepository.findAllByOrderByLastUpdateDesc().stream()
 				.map(log -> modelMapper.map(log, AlarmLogDTO.class))
 				.toList();
 	}

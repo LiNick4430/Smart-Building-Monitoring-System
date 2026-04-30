@@ -9,6 +9,8 @@ import com.sbm.model.enums.DeviceStatus;
 
 public interface AlarmLogRepository extends JpaRepository<AlarmLog, Long> {
 
+	List<AlarmLog> findAllByOrderByLastUpdateDesc();
+	
 	// 查詢特定設備的所有紀錄
     List<AlarmLog> findByDeviceIdOrderByLastUpdateDesc(Long deviceId);
 
