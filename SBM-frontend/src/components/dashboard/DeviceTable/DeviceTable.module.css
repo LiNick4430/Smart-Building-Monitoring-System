@@ -29,6 +29,16 @@
   background: #fafafa;
 }
 
+.empty-state {
+  text-align: center;
+  padding: 48px 0;
+  color: #aaa;
+  font-size: 14px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
 /* Status Badge */
 .status-badge {
   padding: 4px 12px;
@@ -50,4 +60,15 @@
 .status-alarm {
   background: #fdecea;
   color: #c62828;
+}
+
+.clickableRow {
+  cursor: pointer;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 0;
+  color: #aaa;
+  font-size: 14px;
 }

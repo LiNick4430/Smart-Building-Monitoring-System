@@ -1,20 +1,62 @@
 /* Dashboard */
-.dashboard h2 {
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pageHeader h2 {
   margin-bottom: 4px;
+}
+
+.layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
 }
 
 .subtitle {
   color: #888;
-  margin-bottom: 24px;
   font-size: 14px;
 }
 
-.statusMsg {
+/* Error */
+.errorCard {
   text-align: center;
-  margin-top: 60px;
-  font-size: 16px;
+  padding: 48px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.statusMsgError {
-  color: red;
+.errorTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #c62828;
+  margin-bottom: 8px;
+}
+
+.errorMsg {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 24px;
+}
+
+.retryBtn {
+  padding: 8px 24px;
+  background: #1a1a2e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.retryBtn:hover {
+  background: #2a2a4e;
 }

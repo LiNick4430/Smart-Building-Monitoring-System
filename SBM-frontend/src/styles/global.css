@@ -16,13 +16,6 @@ body {
   flex-direction: column;
 }
 
-/* Header */
-.header {
-  background: #1a1a2e;
-  color: white;
-  padding: 16px 32px;
-}
-
 /* Main */
 .main-content {
   padding: 32px;
